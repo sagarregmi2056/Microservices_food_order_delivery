@@ -1,0 +1,4 @@
+step 1: install type script npm i -D  typescript
+step2: tsc --init (initialize typescript config file)
+step3 : install the dependencies
+npm i express nodemon body-parser cors ts-node-dev typescript @types/express @types/cors
