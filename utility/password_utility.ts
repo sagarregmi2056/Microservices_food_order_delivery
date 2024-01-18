@@ -12,3 +12,13 @@ export const GnerateEncryptedPassword = async (
 ) => {
   return await bcrypt.hash(password, salt);
 };
+
+export const Validatepassword = async (
+  enteredPassword: string,
+  savedPassword: string,
+  salt: string
+) => {
+  return (
+    (await GnerateEncryptedPassword(enteredPassword, salt)) === savedPassword
+  );
+};
