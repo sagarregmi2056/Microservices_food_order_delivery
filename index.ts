@@ -2,11 +2,19 @@ import express from "express";
 
 import bodyParser from "body-parser";
 
+import mongoose from "mongoose";
+
 import {
   Admin_routes,
   User_routes,
   Vendor_routes,
 } from "./routes/Index_routes";
+
+import { MONGO_URI } from "./config";
+
+
+
+  
 
 const app = express();
 
