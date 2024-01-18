@@ -13,3 +13,12 @@ export interface VendorLoginInput {
   email: string;
   password: string;
 }
+
+
+
+export interface Vandorpayload{
+  _id:string,
+  email:string,
+  name:string,
+  
+}
