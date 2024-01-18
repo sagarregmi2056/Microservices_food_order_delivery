@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { VendorLoginInput } from "../dto";
 import { Findvandor } from "./Admin_Controller";
-import { Validatepassword } from "../utility";
+import { GnerateSignature, Validatepassword } from "../utility";
 
 export const login = async (
   req: Request,
@@ -20,10 +20,34 @@ export const login = async (
     );
 
     if (validation) {
-      return res.json(existingUser);
+      const signature = GnerateSignature({
+        _id: existingUser.id,
+        email: existingUser.email,
+        name: existingUser.name,
+      });
+
+      return res.json({ token: signature });
     } else {
       return res.json({ message: "password is not valid" });
     }
   }
   return res.json({ message: "ssasa" });
 };
+
+export const GetVandorProfile = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {};
+
+export const UpdateVandorProfile = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {};
+
+export const UpdateVandorServices = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {};
