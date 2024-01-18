@@ -1,4 +1,7 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { Vandorpayload } from "../dto";
+import { SECRET } from "../config";
 
 // this function is responsible to generate a salt
 export const GenerateSalt = async () => {
@@ -21,4 +24,8 @@ export const Validatepassword = async (
   return (
     (await GnerateEncryptedPassword(enteredPassword, salt)) === savedPassword
   );
+};
+
+export const GnerateSignature = (payload: Vandorpayload) => {
+  return jwt.sign(payload, SECRET, { expiresIn: "365d" });
 };
